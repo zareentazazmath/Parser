@@ -34,13 +34,23 @@ class Parser:
                 print("completed printing the file content")
         print("exiting function {0}".format(self.print_file_content.__name__))
 
-    def parse_text(self, folder, filename, text):
-        print("\nentering function " + self.parse_text.__name__ + "<" + folder + ',' + filename + ",'" + text + "'>")
+    def find_text(self, folder, filename, text):
+        print("\nentering function " + self.find_text.__name__ + "<" + folder + ',' + filename + ",'" + text + "'>")
         if self.find_file(folder, filename) is True:
             file_path = folder + '/' + filename
             with open(file_path) as f:
                 if text in f.read():
                     print("Found text " + text)
+        print("exiting function " + self.find_text.__name__)
+
+    def parse_text(self, folder, filename, text):
+        print("\nentering function " + self.parse_text.__name__ + "<" + folder + ',' + filename + ",'" + text + "'>")
+        if self.find_file(folder, filename) is True:
+            file_path = folder + '/' + filename
+            with open(file_path) as f:
+                for line in f:
+                    if text in line:
+                        print(line)
         print("exiting function " + self.parse_text.__name__)
 
 
@@ -53,5 +63,8 @@ parse.find_file("/users/Master/Downloads", "file1.doc")
 # use case 2: print file content if file is found
 parse.print_file_content("/users/Master/Downloads", "file2.doc")
 
-# use case 3: parse the text in the file
-parse.parse_text("/users/Master/Downloads", "file2.doc", "Build")
+# use case 3: find the text in the file
+parse.find_text("/users/Master/Downloads", "file2.doc", "Build")
+
+# use case 4: parse the text in the file
+parse.parse_text("/users/Master/Downloads", "file4.doc", "Action Item")
