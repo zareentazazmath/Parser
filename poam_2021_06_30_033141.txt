@@ -1,0 +1,3 @@
+    Action Item is to create a meeting for this friday
+    Action Item is to send the weekly status report
+    Action Item to send email to Jake
